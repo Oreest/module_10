@@ -10,14 +10,16 @@ class Field:
 
 
 class Name(Field):
-    # super.__init__()
-    # реалізація класу
-    pass
+    def __init__(self, value):
+        super().__init__(value)
 
 
 class Phone(Field):
-    # реалізація класу
-    pass
+    def __init__(self, value):
+        if len(str(value)) == 10:
+            super().__init__(value)
+        else:
+            raise ValueError("Phone must be 10 digits")
 
 
 class Record:
@@ -79,6 +81,7 @@ def main():
     book = AddressBook()
     john_record = Record("John")
     john_record.add_phone("1234567890")
+    john_record.add_phone("1234567890111")
     john_record.add_phone("5555555555")
     book.add_record(john_record)
 
