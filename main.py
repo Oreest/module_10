@@ -35,7 +35,10 @@ class Record:
         return f'{self.name.value} : {phones_info[:-2]}'
 
     def add_phone(self, phone):
-        self.phones.append(Phone(phone))
+        if len(str(phone)) == 10:
+            self.phones.append(Phone(phone))
+        else:
+            raise ValueError("Phone must be 10 digits")
 
     def change_phones(self, phones):
         for phone in phones:
